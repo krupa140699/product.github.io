@@ -9,8 +9,13 @@ import AddProduct from './components/AddProduct';
 import ProductList from './components/ProductList';
 import UpdateProduct from './components/UpdateProduct';
 import Profile from './components/Profile';
+import ForgetPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
+import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
-export const BASE_URL = "https://mernappbackendss.onrender.com"
+export const BASE_URL = "http://localhost:4000"
 function App() {
   return (
     <div className="App">
@@ -18,14 +23,16 @@ function App() {
         <Nav />
         <Routes>
           <Route element={<PrivateComponent />}>
-          <Route path="/" element={<ProductList />} />
+          <Route path="/productList" element={<ProductList />} />
           <Route path="/add" element={<AddProduct />} />
           <Route path="/update/:id" element={<UpdateProduct />} />
           <Route path="/logout" element={<h1>Logout component</h1>} />
           <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/forgotPassword" element={<ForgetPassword />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
         </Routes>
       </BrowserRouter>
       <Footer />

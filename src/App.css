@@ -1,63 +1,91 @@
-.nav-ul li{
- display: inline-block;
- padding: 10px;
+.nav-ul li {
+  display: inline-block;
+  padding: 10px;
 
 }
 
-.nav-ul li a{
+.nav-ul li a {
   color: #fff;
   padding: 5px;
   text-decoration: none;
 }
 
 
-.nav-ul{
+.nav-ul {
   padding: 5px;
- margin: 0;
- background-color: skyblue;
+  margin: 0;
+  background-color: skyblue;
 }
 
-.footer{
-  position: absolute;
+.footer {
+  position: fixed;
+  height: 50px;
   bottom: 0;
   text-align: center;
   width: 100%;
   background-color: skyblue;
 }
 
-.register .product{
+.register .product {
   margin-left: 30%;
 }
 
-.Product-List{
-  text-align: center;
-  margin-top: 50px;
+.register {
+  margin-top: 140px;
+  margin-left: 42%;
 }
 
-.Product-List ul li {
+.Product-List {
+  text-align: center;
+  margin-top: 50px;
+  /* overflow-y: scroll; */
+  margin-bottom: 100px;
+}
+
+.forgetpassword {
+  margin-left: 125px;
+}
+
+.errorMsg {
+  color: red;
+}
+
+.forgetPasswordMain {
+  margin-left: 40%;
+  margin-top: 140px;
+}
+
+/* .Product-List mainCard li {
   display: inline-block;
   border: 1px solid skyblue;
   padding: 5px;
   width: 150px;
-}
+} */
 
-.Product-List ul{
+.Product-List .mainCard {
+  text-align: left;
   margin: 0;
+  display: flex;
+  border: 1px solid skyblue;
+  padding: 5px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-.invalid-input{
+
+.invalid-input {
   color: red;
   margin-top: -20px;
   display: block;
   margin-left: 20px;
 }
 
-.login{
-  margin-left: 30%;
-  margin-top: 100px;
+.login {
+  margin-left: 42%;
+  margin-top: 140px;
 }
 
-.inputBox{
+.inputBox {
   display: block;
   margin: 25px;
   padding: 7px;
@@ -65,8 +93,8 @@
   border: 1px solid skyblue;
 }
 
-.appButton{
-  margin: 25px;
+.appButton {
+  margin: 40px;
   padding: 10px;
   width: 150px;
   background-color: skyblue;
@@ -74,11 +102,15 @@
   cursor: pointer;
 }
 
-.nav-right{
+.custom_field {
+  width: 32%;
+}
+
+.nav-right {
   text-align: right;
 }
 
-.logo{
+.logo {
   width: 45px;
   float: left;
   border-radius: 50%;
@@ -86,10 +118,64 @@
   margin-left: 20px;
 }
 
-.searchProductBox{
+.imgButton {
+  margin-left: 865px;
+  display: block;
+  position: absolute;
+}
+
+.image {
+  text-align: center;
+  width: 25px;
+  border-radius: 50%;
+  /* margin-left: 20px; */
+}
+
+.searchProductBox {
   width: 400px;
   margin: 20px;
   height: 40px;
   border: 1px solid skyblue;
   padding-left: 20px;
+}
+
+.product {
+  text-align: center;
+}
+
+.product input {
+  margin-left: 40%;
+}
+
+.product select {
+  width: 317px;
+  display: initial;
+  margin: 0 0 0px 46px;
+}
+
+.color {
+  background-color: skyblue;
+}
+
+
+.productBox{
+  display: inline-block;
+  border: 1px solid black;
+  padding: 5px;
+  width: 190px; 
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+
+.Deleteimage{
+  width: 25px;
+}
+
+.deleteButton{
+  margin-left: 10px;
+}
+
+.corouselImage{
+  filter: brightness(30%);
 }
