@@ -15,7 +15,7 @@ import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
-export const BASE_URL = "https://mernappbackendss.onrender.com"
+export const BASE_URL = "http://localhost:4000"
 function App() {
   return (
     <div className="App">

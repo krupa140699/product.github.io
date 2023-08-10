@@ -10,7 +10,7 @@ const AddProduct = () => {
     const [productCategory, setProductCategory] = useState([])
     const [err, setErr] = useState(false);
     const [categoryShow, setcategoryShow] = useState(false);
-    const [img, setImage] = useState('');
+    const [selectedImages, setSelectedImages] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -51,15 +51,15 @@ const AddProduct = () => {
     }
 
     const addProduct = async () => {
-        if (!name || !price || !category || !company) {
+        console.log(selectedImages)
+        if (!name || !price || !category || !company || !selectedImages) {
             setErr(true);
             return false;
         }
-        console.log(name, price, category, company);
         const userId = JSON.parse(localStorage.getItem('user'))._id;
         let result = fetch(`${BASE_URL}/add-product`, {
             method: 'post',
-            body: JSON.stringify({ name, price, category, company, userId }),
+            body: JSON.stringify({ name, price, category, company, userId ,selectedImages}),
             headers: {
                 'Content-Type': 'application/json',
                 authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`
@@ -71,6 +71,11 @@ const AddProduct = () => {
         }
         console.log(result)
     }
+
+    const handleImageChange = (e) => {
+        setSelectedImages(URL.createObjectURL(e.target.files[0]));
+    };
+
     return (
         <div className="product">
             <h1>Add product</h1>
@@ -93,8 +98,12 @@ const AddProduct = () => {
             </div> : ''}
             <input type="text" className="inputBox" placeholder="Enter product company" value={company} onChange={(e) => setCompany(e.target.value)} />
             {err && !company && <span className="invalid-input">Enter valid company</span>}
-            {/* <input type="file" accept="image/*"  value={img} onChange={(e) => setImage(e.target.value)} />
-            <img src={img} alt={img} /> */}
+            <input className="file-selector-button"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+            />
+            {selectedImages ? <img className="imageWidth" src={selectedImages} alt={`Images ${selectedImages}`} /> : ''}<br />
             <button className="appButton" onClick={addProduct}>Add product</button>
         </div>
     )
