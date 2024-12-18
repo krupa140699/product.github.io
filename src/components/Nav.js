@@ -19,9 +19,10 @@ const Nav = () => {
                     <li><Link to='/profile'>Profile</Link></li>
                     <li><Link to='/' onClick={logout}>Logout ({JSON.parse(auth).name})</Link></li>
 
-                </ul> : <ul className="nav-ul nav-right">
+                </ul> : <ul className="nav-ul">
+                    
                     <li>
-                        {/* <Link to='/login'>Login</Link> */}
+                      <h5>Urban Avenue</h5>
                     </li>
                     <li>
                         {/* <Link to='/signup'>Sign Up</Link> */}

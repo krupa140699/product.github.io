@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../App";
 import Input from "@material-ui/core/Input";
-import Visibility from "@material-ui/icons/Visibility";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
-import Loader from "./Loader";
+import { CircularProgress } from "@material-ui/core";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import GoogleLogin from './GoogleLogin';
 
 const Login = () => {
   let [showLoader, setLoader] = useState(false);
@@ -25,17 +24,16 @@ const Login = () => {
 
   })
 
-  const handleClickShowPassword = () => {
-    setPassword({ ...password, showPassword: !password.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   const handlePasswordChange = (prop) => (event) => {
     setPassword({ ...password, [prop]: event.target.value });
   };
+
+
+  const GoogleWrapper = ()=>(
+		<GoogleOAuthProvider clientId="185296585033-hhletbbmb413fi7dgerrd7m2k1urefir.apps.googleusercontent.com">
+			<GoogleLogin></GoogleLogin>
+		</GoogleOAuthProvider>
+	)
 
   const loginHandle = async () => {
     setLoader(true)
@@ -59,45 +57,54 @@ const Login = () => {
     }
   }
   return (
-    <div className="login" >
-      {showLoader ?
-        (<Loader />) :
-        (<div>
-          <InputLabel htmlFor="standard-adornment-password">
-            Enter Email
-          </InputLabel>
-          <Input className="custom_field" value={email} onChange={(e) => setEmail(e.target.value)} type="text"
-          />
-          <br /><br />
-
-          <InputLabel className="input_label" htmlFor="standard-adornment-password">
-            Enter Password
-          </InputLabel>
+    <div className="login-container">
+      {showLoader ? (
+        <div className="loader">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className="login-form">
+          <h2 className="login-title">Login</h2>
+          <InputLabel className="input-label">Enter Email</InputLabel>
           <Input
-            type={password.showPassword ? "text" : "password"}
-            onChange={handlePasswordChange("password")}
-            value={password.password}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
-                  {password.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
+            className="custom-input"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder="Email Address"
+            fullWidth
           />
-          <br /><br />
-          <Link className="forgetpassword" to='/forgotPassword'>Forget Password?</Link><br /><br />
-          {/* <input className="inputBox" value={password} onChange={(e)=> setPassword(e.target.value)} type="password" placeholder="Enter Password" /><i class="fa fa-eye"></i> */}
-          <button type="button" className="appButton" onClick={loginHandle}>Login</button>
-          <Link to='/signup'>Sign Up</Link>
-        </div>)
-      }
+
+          <InputLabel className="input-label">Enter Password</InputLabel>
+          <Input
+            className="custom-input"
+            type={password.showPassword ? 'text' : 'password'}
+            onChange={handlePasswordChange('password')}
+            value={password.password}
+            placeholder="Password"
+            fullWidth
+          />
+
+          <Link className="forgot-password" to="/forgotPassword">Forgot Password?</Link>
+
+          <Button
+            variant="contained"
+            className="login-button"
+            onClick={loginHandle}
+            fullWidth
+          >
+            Login
+          </Button>
+
+          <GoogleWrapper />
+
+          <div className="signup-link">
+            <span>Don't have an account? </span>
+            <Link to="/signup"> Sign Up</Link>
+          </div>
+        </div>
+      )}
     </div>
-
   );
-}
-
+};
 export default Login;

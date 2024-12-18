@@ -15,7 +15,7 @@ import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
-export const BASE_URL = "http://localhost:4000"
+export var BASE_URL = "http://localhost:4000"
 function App() {
   return (
     <div className="App">
@@ -34,8 +34,9 @@ function App() {
           <Route path="/forgotPassword" element={<ForgetPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
         </Routes>
+        {/* <Footer /> */}
       </BrowserRouter>
-      <Footer />
+     
     </div>
   );
 }

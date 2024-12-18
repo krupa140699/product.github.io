@@ -53,7 +53,7 @@ const SignUp = () => {
                         <InputLabel className="input_label" htmlFor="standard-adornment-password">
                             Enter Password
                         </InputLabel>
-                        <Input className="custom_field" type="text" value={password} onChange={(e) => setPassword(e.target.value)} /> <br /><br />
+                        <Input className="custom_field" type="password" value={password} onChange={(e) => setPassword(e.target.value)} /> <br /><br />
                         <InputLabel className="input_label" htmlFor="standard-adornment-password">
                             Enter Email
                         </InputLabel>
