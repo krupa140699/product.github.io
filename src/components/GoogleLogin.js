@@ -13,7 +13,7 @@ const GoolgeLogin = (props) => {
 				const {email, name, image} = result.data.user;
 				const token = result.data.token;
 				const obj = {email,name, token, image};
-				localStorage.setItem('user-info',JSON.stringify(obj));
+				localStorage.setItem('user',JSON.stringify(obj));
                 navigate('/productList');
 			} else {
 				console.log(authResult);
@@ -24,11 +24,20 @@ const GoolgeLogin = (props) => {
 		}
 	};
 
+	// const googleLogin = useGoogleLogin({
+	// 	onSuccess: responseGoogle,
+	// 	onError: responseGoogle,
+	// 	flow: "auth-code",
+	// });
 	const googleLogin = useGoogleLogin({
-		onSuccess: responseGoogle,
-		onError: responseGoogle,
+		onSuccess: (authResult) => {
+		  responseGoogle(authResult); // Call your responseGoogle function
+		},
+		onError: (error) => {
+		  console.log("Google login error:", error);
+		},
 		flow: "auth-code",
-	});
+	  });  
 
 	return (
 		<div className="App">
